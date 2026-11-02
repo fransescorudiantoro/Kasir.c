@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+    int total_belanja;
+    int nominal_diskon;
+    int total_bayar;
+    char pilihan;
+
+    printf("=== TOKO BUKU MEDIA EDUKASI ===\n\n");
+
+    // LOGIKA PERULANGAN TRANSAKSI
+    while (1) {
+        // 1. Input Total Belanja
+        printf("Masukkan Total Belanja (Rp): ");
+        scanf("%d", &total_belanja);
+
+        // 2. Logika Percabangan (if - else if - else) Sesuai Ketentuan Soal
+        if (total_belanja >= 200000) {
+            // Kondisi 1: >= Rp 200.000 (Diskon 20%)
+            printf("Status Diskon : Mendapat Diskon 20%%\n");
+            nominal_diskon = total_belanja * 20 / 100;
+        } 
+        else if (total_belanja >= 100000) {
+            // Kondisi 2: >= Rp 100.000 dan < Rp 200.000 (Diskon 10%)
+            printf("Status Diskon : Mendapat Diskon 10%%\n");
+            nominal_diskon = total_belanja * 10 / 100;
+        } 
+        else {
+            // Kondisi 3: < Rp 100.000 (Diskon 0%)
+            printf("Status Diskon : Tidak Mendapat Diskon (0%%)\n");
+            nominal_diskon = 0;
+        }
+
+        // 3. Menghitung Total Bayar Akhir
+        total_bayar = total_belanja - nominal_diskon;
+
+        // 4. Menampilkan Rincian Nota Pembayaran
+        printf("Nominal Diskon: Rp %d\n", nominal_diskon);
+        printf("TOTAL BAYAR   : Rp %d\n", total_bayar);
+        printf("===============================\n");
+
+        // Fitur konfirmasi untuk mengulang transaksi kasir
+        printf("Apakah ada transaksi belanja lain? (y/n): ");
+        scanf(" %c", &pilihan);
+        printf("\n");
+
+        // Jika menekan 'n' atau 'N', program kasir akan selesai
+        if (pilihan == 'n' || pilihan == 'N') {
+            printf("Terima kasih telah menggunakan sistem kasir!\n");
+            break;
+        }
+    }
+
+    return 0;
+}
+    
